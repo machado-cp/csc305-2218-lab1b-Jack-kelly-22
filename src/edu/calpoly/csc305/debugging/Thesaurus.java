@@ -1,5 +1,3 @@
-package edu.calpoly.csc305.debugging;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +11,12 @@ public class Thesaurus {
   }
 
   public void addAlternatives(String word, String ... alternatives) {
-    synonyms.get(word).addAll(Arrays.asList(alternatives));
+    if (synonyms.containsKey(word)) {
+      synonyms.get(word).addAll(Arrays.asList(alternatives));
+    } else {
+      synonyms.put(word, Arrays.asList(alternatives));
+    }
+    
   }
 
   public List<String> alternatives(String word) {
